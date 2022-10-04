@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>Lirik</title>
+</head>
+<style>
+    @font-face {
+        font-family: "Porter";
+        src: url(./Porter\ Bold\ DEMO\ 700.ttf);
+    }
+    body {
+        height: 100%;
+        background: linear-gradient(to bottom left, #2c8e0e 20%, #c7f024 100%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+        margin: 60px 250px;
+    }
+    h1 {
+        font-family: "Porter";
+        color: #133d06;
+    }
+    p {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        font-size: 20px;
+    }
+    .artist {
+        font-family: "Porter";
+        font-size: 30px;
+    }
+    ::placeholder {
+        text-align: center;
+    }
+    .kotak {
+        background-color: rgb(4, 45, 4);
+        padding: 20px 10px;
+        margin-top: 10px;
+        border-radius: 20px;
+    }
+    input {
+        padding: 5px 50px;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <h1>Punny Web</h1>
+    <br>
+    <div class="kotak">
+        <p id="artist" class="artist"></p>
+        <p id="songTitle"></p>
+        <p id="songLyrics" class="songl"></p>
+        <p><span id="counting"></span></p>
+    </div>
+
+    <script>
+        let lirik_lagu = {
+            status: true,
+            data : {
+                artist: "Westlife",
+                songTitle: "I Have A Dream",
+                songLyrics: "I have a dream, a song to sing\nTo help me cope with anything\nIf you see the wonder (wonder) of a fairy tale\nYou can take the future even if you fail"
+            }
+        }
+        let artist = document.getElementById("artist")
+        let songTitle = document.getElementById("songTitle")
+        let songLyrics = document.getElementById("songLyrics")
+        let counting = document.getElementById("counting")
+
+        let artist_content = lirik_lagu.data.artist
+        let lyrics_content = lirik_lagu.data.songLyrics.replaceAll("\n", " <br>")
+        let title_content = lirik_lagu.data.songTitle
+
+        let count = lyrics_content.split(" ").length
+
+        artist.innerHTML = artist.innerHTML + artist_content
+        songTitle.innerHTML = songTitle.innerHTML + title_content
+        songLyrics.innerHTML = songLyrics.innerHTML + lyrics_content
+        counting.textContent = `Jumlah Kata: ${count}`
+    </script>
+</body>
+</html>
